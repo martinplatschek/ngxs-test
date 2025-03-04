@@ -50,6 +50,11 @@ export class AppState {
   }
 
   @Selector()
+  static isFormValid(state: AppStateModel) {
+    return state.testForm?.status === 'VALID';
+  }
+
+  @Selector()
   static partnerId(state: AppStateModel) {
     return state.partnerId;
   }

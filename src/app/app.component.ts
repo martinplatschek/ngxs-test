@@ -19,6 +19,14 @@ import {JsonPipe} from '@angular/common';
     <div>PartnerId: {{ partnerId() }}</div>
     <div>IsLoading: {{ isLoading() }}</div>
     <hr>
+    <h1>
+      @if (isFormValid()) {
+        Form ist valid!
+      } @else {
+        Form ist noch nicht valid :(
+      }
+    </h1>
+    <hr>
     <pre>
       {{ formModel() | json }}
     </pre>
@@ -30,7 +38,7 @@ import {JsonPipe} from '@angular/common';
       </div>
       <div>
         <label>Hidden Input (Numbers)</label>
-        <input formControlName="email"  [hiddenInput]="true" mask="XXX/X0/0000">
+        <input formControlName="email" [hiddenInput]="true" mask="XXX/X0/0000">
       </div>
       <div>
         <label>Datum</label>
@@ -44,6 +52,7 @@ export class AppComponent {
   public isLoading = select(AppState.isLoading);
   public partnerId = select(AppState.partnerId);
   public formModel = select(AppState.form)
+  public isFormValid = select(AppState.isFormValid);
 
   public appForm: FormGroup;
 
